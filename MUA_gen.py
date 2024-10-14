@@ -1,24 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def MUA_gen(length, T, x_0, WNJ_WSA):
+def MUA_gen(length, T, x_0):
     L=[]
     L.append(x_0)  # Ensure x_0 is a column vector
-
-    if WNJ_WSA:
-        Q = np.array([
-            [T**5 / 20, T**4 / 8, T**3 / 6],
-            [T**4 / 8, T**3 / 3, T**2 / 2],
-            [T**3 / 6, T**2 / 2, T]
-        ])
-        print("The white-noise jerk model is used")
-    else:
-        Q = np.array([
-            [T**4 / 4, T**3 / 2, T**2 / 2],
-            [T**3 / 2, T**2 / 2, T],
-            [T**2 / 2, T, 1]
-        ])
-        print("The Wiener-sequence acceleration model is used")
+    Q = np.array([
+        [T**5 / 20, T**4 / 8, T**3 / 6],
+        [T**4 / 8, T**3 / 3, T**2 / 2],
+        [T**3 / 6, T**2 / 2, T]
+    ])
+    print("The white-noise jerk model is used")
+    
 
     for i in range(length):
         U = np.random.randn(3, 1)  # Generate a random vector
